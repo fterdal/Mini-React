@@ -30,8 +30,8 @@ class App extends React.Component {
     this.incrementCounter() // 3
   }
   incrementCounter = () => {
-    // this.setState(prevState => ({counter: prevState.counter + 1})) // DOES WORK 😇
-    this.setState({counter: this.state.counter + 1}) // DOESNT WORK 😈
+    this.setState(prevState => ({counter: prevState.counter + 1})) // DOES WORK 😇
+    // this.setState({counter: this.state.counter + 1}) // DOESNT WORK 😈
   }
   componentDidMount() {
     setTimeout(() => {
