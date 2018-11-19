@@ -29,43 +29,6 @@ describe('Clickable Image', () => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import React from 'react'
 // import enzyme, { shallow } from 'enzyme'
 // import { expect } from 'chai'
