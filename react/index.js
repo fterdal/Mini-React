@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-const ClickableImage = (props) => {
+export const ClickableImage = (props) => {
   const { image, handleClick } = props
   return (
     <div key={image.id} onClick={() => handleClick(image.id)} >
@@ -11,7 +11,7 @@ const ClickableImage = (props) => {
   )
 }
 
-class App extends React.Component {
+export class App extends React.Component {
   constructor() {
     super()
     this.state = {
