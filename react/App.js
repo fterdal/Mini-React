@@ -30,7 +30,8 @@ export class App extends React.Component {
           { id: 1, name: 'finn', imageUrl: 'https://robohash.org/finn?set=set2' },
           { id: 2, name: 'adam', imageUrl: 'https://robohash.org/adam?set=set2' },
           { id: 3, name: 'chris', imageUrl: 'https://robohash.org/chris?set=set2' },
-          { id: 4, name: 'ozlem', imageUrl: 'https://robohash.org/ozlem?set=set2' }
+          { id: 4, name: 'ozlem', imageUrl: 'https://robohash.org/ozlem?set=set2' },
+          { id: 5, name: 'evan', imageUrl: 'https://robohash.org/evan?set=set2' }
         ]
       })
     }, 1000)
