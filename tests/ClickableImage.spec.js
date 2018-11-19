@@ -1,4 +1,4 @@
-import { ClickableImage } from '../react'
+import { ClickableImage } from '../react/ClickableImage'
 
 describe('ClickableImage', () => {
   it('renders a div', () => {

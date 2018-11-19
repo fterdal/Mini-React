@@ -6,7 +6,7 @@
   "scripts": {
     "build-watch": "webpack -w",
     "start": "webpack-dev-server",
-    "test": "mocha tests"
+    "test": "mocha --require babel-core/register tests"
   },
   "keywords": [],
   "author": "Finn Terdal",
