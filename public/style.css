@@ -19,8 +19,8 @@
   flex-wrap: wrap;
 }
 
-/* #invite-robots {
+.robotsButton {
   background-color: blueviolet;
   color: peachpuff;
   font-size: 14px;
-} */
+}

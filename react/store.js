@@ -23,7 +23,6 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case SET_ROBOTS:
-      console.log('ACTION.ROBOTS', action.robots)
       return { robots: action.robots }
     case REMOVE_ROBOT:
       return { robots: state.robots.filter(robot => robot.name !== action.robotName ) }

@@ -21,23 +21,22 @@ const mapDispatchToProps = dispatch => {
 const ConnectedSingleRobot = connect(null, mapDispatchToProps)(SingleRobot)
 
 const AllRobots = (props) => {
-  console.log('props', props)
   const  { robots, setRobotsFree } = props
   return (
-    <div className="allRobots">
-      <button type="button" onClick={setRobotsFree}>SET THE ROBOTS FREE!</button>
-      {robots.map(robot => (
-        <ConnectedSingleRobot key={robot.name} robot={robot} />
-      ))}
+    <div>
+      <button className="robotsButton" type="button" onClick={setRobotsFree}>SET THE ROBOTS FREE!</button>
+      <div className="allRobots">
+        {robots.map(robot => (
+          <ConnectedSingleRobot key={robot.name} robot={robot} />
+        ))}
+      </div>
     </div>
   )
 }
 
 const mapState = (store) => {
-  console.log('store', store)
   return {
     robots: store.robots,
-    greeting: 'HELLO FROM THE REDUX STORE!!!'
   }
 }
 const robots = [
@@ -49,7 +48,6 @@ const robots = [
 const mapDispatch = (dispatch) => {
   return {
     setRobotsFree: () => {
-      console.log('SET ROBOTS FREE IS BEING CALLED')
       dispatch(setRobots(robots))
     }
   }
