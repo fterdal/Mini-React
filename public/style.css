@@ -5,8 +5,7 @@
 
 .singleRobot {
   flex-grow: 1;
-  width: 30%;
-  max-width: 40%;
+  flex-basis: 200px;
   border: 1px solid;
   border-radius: 15px;
   margin: 10px;
@@ -17,6 +16,7 @@
 .allRobots {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .robotsButton {
