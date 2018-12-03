@@ -3,8 +3,24 @@
   background-color: peachpuff;
 }
 
-#invite-robots {
+.singleRobot {
+  flex-grow: 1;
+  width: 30%;
+  max-width: 40%;
+  border: 1px solid;
+  border-radius: 15px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.allRobots {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* #invite-robots {
   background-color: blueviolet;
   color: peachpuff;
   font-size: 14px;
-}
+} */
