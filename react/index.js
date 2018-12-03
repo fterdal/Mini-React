@@ -1,8 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-const SingleRobot = ({robot}) => {
-  console.log('SINGLE ROBOT', robot)
+const SingleRobot = ({ robot }) => {
   return (
     <div className="singleRobot">
       <img src={`https://robohash.org/${robot.name}?size=150x150`} />
@@ -12,7 +11,6 @@ const SingleRobot = ({robot}) => {
 }
 
 const AllRobots = ({ robots }) => {
-  console.log('ROBOTS', robots)
   return (
     <div className="allRobots">
       {robots.map(robot => (
