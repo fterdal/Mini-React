@@ -18,8 +18,8 @@
     ]
   },
   "dependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

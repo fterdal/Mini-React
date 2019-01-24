@@ -1,19 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { render } from 'react-dom'
+
+class ClassComp extends React.Component {
+  state = {
+    thing: ''
+  }
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({
+      [name]: value
+    })
+  }
+  render() {
+    return (
+      <div>
+        <label htmlFor="thing">ClassComp Thing:</label>
+        <input
+          value={this.state.thing}
+          onChange={this.handleChange}
+          name="thing"
+          type="text" />
+      </div>
+    )
+  }
+}
+
+const HookComp = () => {
+  const [thing, setThing] = useState('')
+  const handleChange = ({ target: { value } }) => {
+    setThing(value)
+  }
+  return (
+    <div>
+      <label htmlFor="thing">HookComp Thing:</label>
+      <input
+        value={thing}
+        onChange={handleChange}
+        name="thing"
+        type="text" />
+    </div>
+  )
+}
 
 const App = () => (
   <div>
     <h1>Hello from React!</h1>
-    <p>Riddle: We come at night without being fetched; we disappear by day without being stolen. What are we?</p>
-    <p style={{fontStyle: 'italic'}}>Pop open the developer tools to see the answer.</p>
+    <ClassComp />
+    <HookComp />
   </div>
 )
-
-console.log(`Answer:
-✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ 
-✨ ✨ ✨ Stars ✨ ✨ ✨
-✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ 
-`)
 
 render(
   <App />,
