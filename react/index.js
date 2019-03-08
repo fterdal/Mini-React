@@ -1,22 +1,57 @@
 import React from 'react'
 import { render } from 'react-dom'
+import axios from 'axios'
 
-const App = () => (
-  <div>
-    <h1>Hello from React!</h1>
-    <p>Riddle: We come at night without being fetched; we disappear by day without being stolen. What are we?</p>
-    <p style={{fontStyle: 'italic'}}>Pop open the developer tools to see the answer.</p>
-  </div>
-)
+class App extends React.Component {
+  state = {
+    name: '',
+    favNumber: 9,
+  }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  handleSubmit = async (event) => {
+    try {
+      event.preventDefault()
+      await axios.put('/finn', this.state)
+      this.setState({
+        name: '',
+        favNumber: 9,
+      })
+    } catch (err) {
+      console.error(err)
+      this.setState({
+        name: '',
+        favNumber: 9,
+      })
+    }
+  }
 
-console.log(`Answer:
-✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ 
-✨ ✨ ✨ Stars ✨ ✨ ✨
-✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ 
-`)
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.handleChange}
+            value={this.state.name}
+            name="name"
+            type="text" />
+          <input
+            onChange={this.handleChange}
+            value={this.state.favNumber}
+            name="favNumber"
+            type="number" />
+          <button type="submit">Submit Button</button>
+        </form>
+      </div>
+    )
+  }
+}
+
 
 render(
   <App />,
   document.getElementById('app')
 )
-
