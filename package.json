@@ -5,7 +5,9 @@
   "main": "react/index.js",
   "scripts": {
     "build-watch": "webpack -w",
-    "start": "webpack-dev-server"
+    "dev-server": "webpack-dev-server",
+    "start-server": "nodemon server",
+    "start": "npm run start-server & npm run build-watch"
   },
   "keywords": [],
   "author": "Finn Terdal",
@@ -17,6 +19,8 @@
     ]
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^7.0.3",

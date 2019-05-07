@@ -1,3 +1,5 @@
+const { join } = require('path')
+
 module.exports = {
   mode: 'development',
   entry: [
@@ -5,7 +7,7 @@ module.exports = {
     './react/index.js',
   ],
   output: {
-    path: __dirname,
+    path: join( __dirname, 'public'),
     filename: './bundle.js'
   },
   devServer: {
