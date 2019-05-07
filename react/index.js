@@ -1,8 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
+import { Provider, connect } from 'react-redux'
 import store, { increment } from './redux'
 
-class ConnectedCounter extends React.Component {
+class OldeConnectedCounter extends React.Component {
   constructor(props) {
     super(props)
     this.state = store.getState()
@@ -23,7 +24,7 @@ const Counter = props => {
   // console.log(store.getState())
   // const { counter } = store.getState()
   const handleClick = () => {
-    store.dispatch(increment())
+    props.incrementCounter()
   }
   console.log('PROPS', props)
   const { counter } = props
@@ -39,4 +40,25 @@ const Counter = props => {
   )
 }
 
-render(<ConnectedCounter />, document.getElementById('app'))
+const mapState = state => {
+  return {
+    counter: state.counter,
+    name: 'JUST A COUNTER'
+  }
+}
+const mapDispatch = dispatch => {
+  return {
+    incrementCounter: () => {
+      console.log('dispatching an action!')
+      dispatch(increment())
+    },
+  }
+}
+const ConnectedCounter = connect(mapState, mapDispatch)(Counter)
+
+render(
+  <Provider store={store}>
+    <ConnectedCounter />
+  </Provider>,
+  document.getElementById('app')
+)
