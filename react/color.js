@@ -12,7 +12,7 @@ export function setColor(color) {
 
 const initialState = 'white'
 
-export default function reducer(state = initialState, action) {
+export default function colorReducer(state = initialState, action) {
   switch (action.type) {
     case SET_COLOR:
       return action.color

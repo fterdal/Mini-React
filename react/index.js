@@ -50,7 +50,7 @@ const ConnectedCounter = connect(
 )(Counter)
 
 const ColorPicker = props => {
-  console.log('PROPS', props)
+  // console.log('PROPS', props)
   const { color } = props
   const handleColorChange = event => {
     props.setColor(event.target.value)
