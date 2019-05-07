@@ -1,41 +1,27 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
-import store, { increment } from './redux'
-
-class OldeConnectedCounter extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = store.getState()
-  }
-  componentDidMount() {
-    store.subscribe(() => {
-      const state = store.getState()
-      this.setState(state)
-    })
-  }
-  render() {
-    console.log('ConnectedCounter state:', this.state)
-    return <Counter counter={this.state.counter} />
-  }
-}
+import store, { increment, fetchCounter } from './redux'
 
 const Counter = props => {
-  // console.log(store.getState())
-  // const { counter } = store.getState()
-  const handleClick = () => {
+  const handleIncrement = () => {
     props.incrementCounter()
   }
-  console.log('PROPS', props)
+  const handleRandom = () => {
+    props.fetchCounter()
+  }
+  // console.log('PROPS', props)
   const { counter } = props
   return (
     <div>
       <h1>Hello from React!</h1>
       <h2>Counter: {counter}</h2>
-      <button onClick={handleClick} type="button">
+      <button onClick={handleIncrement} type="button">
         PLUS
       </button>
-      <button type="button">MINUS</button>
+      <button onClick={handleRandom} type="button">
+        RANDOM
+      </button>
     </div>
   )
 }
@@ -43,18 +29,24 @@ const Counter = props => {
 const mapState = state => {
   return {
     counter: state.counter,
-    name: 'JUST A COUNTER'
+    name: 'JUST A COUNTER',
   }
 }
 const mapDispatch = dispatch => {
   return {
     incrementCounter: () => {
-      console.log('dispatching an action!')
       dispatch(increment())
+    },
+    fetchCounter: () => {
+      dispatch(fetchCounter())
     },
   }
 }
-const ConnectedCounter = connect(mapState, mapDispatch)(Counter)
+
+const ConnectedCounter = connect(
+  mapState,
+  mapDispatch
+)(Counter)
 
 render(
   <Provider store={store}>
