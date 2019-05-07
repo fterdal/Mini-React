@@ -1,7 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider, connect } from 'react-redux'
-import store, { increment, fetchCounter } from './redux'
+import store from './redux'
+import { increment, fetchCounter } from './counter'
+import { setColor } from './color'
 
 const Counter = props => {
   const handleIncrement = () => {
@@ -10,7 +12,6 @@ const Counter = props => {
   const handleRandom = () => {
     props.fetchCounter()
   }
-  // console.log('PROPS', props)
   const { counter } = props
   return (
     <div>
@@ -26,13 +27,13 @@ const Counter = props => {
   )
 }
 
-const mapState = state => {
+const mapStateForCounter = state => {
   return {
     counter: state.counter,
     name: 'JUST A COUNTER',
   }
 }
-const mapDispatch = dispatch => {
+const mapDispatchForCounter = dispatch => {
   return {
     incrementCounter: () => {
       dispatch(increment())
@@ -44,13 +45,41 @@ const mapDispatch = dispatch => {
 }
 
 const ConnectedCounter = connect(
-  mapState,
-  mapDispatch
+  mapStateForCounter,
+  mapDispatchForCounter
 )(Counter)
+
+const ColorPicker = props => {
+  console.log('PROPS', props)
+  const { color } = props
+  const handleColorChange = event => {
+    props.setColor(event.target.value)
+  }
+  return (
+    <div style={{backgroundColor: color}}>
+      <h3>Enter a Color:</h3>
+      <input onChange={handleColorChange} />
+    </div>
+  )
+}
+
+const mapStateForColorPicker = ({ color }) => ({ color })
+
+const mapDispatchForColorPicker = dispatch => ({
+  setColor: color => {
+    dispatch(setColor(color))
+  },
+})
+
+const ConnectedColorPicker = connect(
+  mapStateForColorPicker,
+  mapDispatchForColorPicker
+)(ColorPicker)
 
 render(
   <Provider store={store}>
     <ConnectedCounter />
+    <ConnectedColorPicker />
   </Provider>,
   document.getElementById('app')
 )
