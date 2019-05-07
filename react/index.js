@@ -1,22 +1,42 @@
 import React from 'react'
 import { render } from 'react-dom'
+import store, { increment } from './redux'
 
-const App = () => (
-  <div>
-    <h1>Hello from React!</h1>
-    <p>Riddle: We come at night without being fetched; we disappear by day without being stolen. What are we?</p>
-    <p style={{fontStyle: 'italic'}}>Pop open the developer tools to see the answer.</p>
-  </div>
-)
+class ConnectedCounter extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = store.getState()
+  }
+  componentDidMount() {
+    store.subscribe(() => {
+      const state = store.getState()
+      this.setState(state)
+    })
+  }
+  render() {
+    console.log('ConnectedCounter state:', this.state)
+    return <Counter counter={this.state.counter} />
+  }
+}
 
-console.log(`Answer:
-✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨
-✨ ✨ ✨ Stars ✨ ✨ ✨
-✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨
-`)
+const Counter = props => {
+  // console.log(store.getState())
+  // const { counter } = store.getState()
+  const handleClick = () => {
+    store.dispatch(increment())
+  }
+  console.log('PROPS', props)
+  const { counter } = props
+  return (
+    <div>
+      <h1>Hello from React!</h1>
+      <h2>Counter: {counter}</h2>
+      <button onClick={handleClick} type="button">
+        PLUS
+      </button>
+      <button type="button">MINUS</button>
+    </div>
+  )
+}
 
-render(
-  <App />,
-  document.getElementById('app')
-)
-
+render(<ConnectedCounter />, document.getElementById('app'))

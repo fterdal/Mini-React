@@ -12,14 +12,15 @@
   "license": "ISC",
   "babel": {
     "presets": [
-      "env",
       "react",
       "stage-2"
     ]
   },
   "dependencies": {
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
