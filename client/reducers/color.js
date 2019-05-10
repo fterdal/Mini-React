@@ -13,6 +13,7 @@ export function setColor(color) {
 const initialState = 'white'
 
 export default function colorReducer(state = initialState, action) {
+  console.log('STEP 3 - hit the reducer')
   switch (action.type) {
     case SET_COLOR:
       return action.color

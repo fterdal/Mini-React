@@ -20,7 +20,6 @@ export function setCounter(counter) {
 // THUNK CREATORS
 export function fetchCounter() {
   return async function(dispatch) {
-    console.log('WHAT THE THUNK!? 😕')
     try {
       const { data } = await axios.get('/api/counter')
       dispatch(setCounter(data.counter))
