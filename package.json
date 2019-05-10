@@ -1,7 +1,7 @@
 {
-  "name": "mini-react",
+  "name": "react-redux-forms-demo",
   "version": "1.0.0",
-  "description": "A Very Minimal React Configuration",
+  "description": "React with Redux and some forms with thunks",
   "main": "react/index.js",
   "scripts": {
     "build-watch": "webpack -w",

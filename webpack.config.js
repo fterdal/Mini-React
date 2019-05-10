@@ -4,7 +4,7 @@ module.exports = {
   mode: 'development',
   entry: [
     'babel-polyfill', // enables async-await
-    './react/index.js',
+    './client/index.js',
   ],
   output: {
     path: join( __dirname, 'public'),
