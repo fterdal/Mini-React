@@ -6,7 +6,6 @@ import CookieForm from './components/CookieForm'
 import Counter from './components/Counter'
 import ColorPicker from './components/ColorPicker'
 
-
 render(
   <Provider store={store}>
     <h1>Hello from React!</h1>
