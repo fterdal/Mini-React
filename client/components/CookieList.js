@@ -1,21 +1,35 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { fetchCookies } from '../reducers'
 
-const CookieList = (props) => {
-  return (
-    <div>
-      <h2>Cookies 🍪:</h2>
-      <ul>
-        {props.cookies.map(cookie => (
-          <li key={cookie.id}>{cookie.name}</li>
-        ))}
-      </ul>
-    </div>
-  )
+class CookieList extends React.Component {
+  componentDidMount() {
+    this.props.fetchInitialCookies()
+  }
+  render() {
+    console.log(this.props.cookies)
+    return (
+      <div>
+        <h2>Cookies 🍪:</h2>
+        <ul>
+          {this.props.cookies.map(cookie => (
+            <li key={cookie.id}>{cookie.name}</li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 }
 
-const mapListForCookieList = ({ cookies }) => ({ cookies })
+const mapPropsForCookieList = ({ cookies }) => ({ cookies })
+
+const mapDispatchForCookieList = dispatch => {
+  return {
+    fetchInitialCookies: () => dispatch(fetchCookies()),
+  }
+}
 
 export default connect(
-  mapListForCookieList
+  mapPropsForCookieList,
+  mapDispatchForCookieList,
 )(CookieList)

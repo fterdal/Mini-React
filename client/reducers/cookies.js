@@ -19,10 +19,21 @@ export function addCookie(cookie) {
 }
 
 // THUNK CREATORS
+export function fetchCookies() {
+  return async function(dispatch) {
+    try {
+      const { data } = await axios.get('/api/cookies')
+      dispatch(setCookies(data))
+    } catch (err) {
+      console.log('ERR', err)
+    }
+  }
+}
 export function postCookie(cookie) {
   return async function(dispatch) {
     try {
       const { data } = await axios.post('/api/cookies', cookie)
+      console.log(data)
       dispatch(addCookie(data))
     } catch (err) {
       console.log('ERR', err)

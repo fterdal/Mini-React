@@ -32,17 +32,17 @@ app.get('/api/cookies', (req, res, next) => {
 })
 
 app.post('/api/cookies', (req, res, next) => {
-  const newCookie = req.body
   let nextId = -1
   cookies.forEach(existingCookie => {
     if (existingCookie.id >= nextId) {
       nextId = existingCookie.id + 1
     }
   })
-  cookies.push({
+  const newCookie = {
     id: nextId,
-    name: newCookie.name
-  })
+    name: req.body.name,
+  }
+  cookies.push(newCookie)
   res.status(201)
   res.json(newCookie)
 })
